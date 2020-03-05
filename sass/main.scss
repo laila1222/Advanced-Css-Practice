@@ -1,8 +1,7 @@
-
 // Colors
 $color-primary: #55c57a;
 $color-primary-light: #7ed56f;
-$color-primary-dark:#28b485;
+$color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
@@ -18,9 +17,9 @@ $color-black: #000;
   box-sizing: inherit;
 }
 
-html{
-    /* important feature for rem values */
-    font-size: 62.5%;
+html {
+  /* important feature for rem values */
+  font-size: 62.5%;
 }
 
 body {
@@ -36,46 +35,45 @@ body {
 .header {
   height: 95vh;
   background-image: linear-gradient(
-      to right bottom, 
-      $color-primary-light, 
-      $color-primary-dark),
+      to right bottom,
+      $color-primary-light,
+      $color-primary-dark
+    ),
     url("../img/background.jpg");
   background-size: cover;
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   position: relative;
-}
 
-.header__logo-box {
+  &__logo-box {
     position: absolute;
-    top: 2rem ;
+    top: 2rem;
     left: 2rem;
-}
+  }
 
-.header__logo {
+  .&__logo {
     height: 10rem;
-}
+  }
 
-.header__text-box {
+  .&__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+  }
 }
 
-.heading-primary{
-    color: $color-white;
-    text-transform: uppercase;
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
 
-    /* Removes shakiness */
-    backface-visibility: hidden;
+  /* Removes shakiness */
+  backface-visibility: hidden;
 
-    margin-bottom: 6rem;
-   
-}
+  margin-bottom: 6rem;
 
-.heading-primary--main {
+  .&--main {
     display: block;
     font-size: 6rem;
     font-weight: 400;
@@ -87,9 +85,9 @@ body {
     /* animation-iteration-count: 3; */
     /* starts fast, but slows down: */
     animation-timing-function: ease-out;
-}
+  }
 
-.heading-primary--sub {
+  .&--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
@@ -98,84 +96,103 @@ body {
     animation-name: moveInRight;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
+  }
 }
 
 @keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
 
-    80% {
-        transform: translateX(1rem);
-    }
+  80% {
+    transform: translateX(1rem);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
-
 @keyframes moveInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
 
-    80% {
-        transform: translateX(-1rem);
-    }
+  80% {
+    transform: translateX(-1rem);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 @keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
-.btn:link, 
-.btn:visited {
+
+
+
+
+
+
+
+
+
+
+.btn {
+  &:link,
+  &:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding:  1.5rem 4rem;
+    padding: 1.5rem 4rem;
     display: inline-block;
     border-radius: 10rem;
-    transition: all .2s;
+    transition: all 0.2s;
     position: relative;
     font-size: 1.6rem;
-    
-}
+  }
 
-.btn:hover {
+  &:hover {
     transform: translateY(-3px);
     /* Up down, blur, color */
-    box-shadow: 0 1rem 2rem rgba($color-black, .2);
-}
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
 
-.btn:active {
+    &::after {
+        /* scale- increases the element */
+        transform: scaleX(1.4) scaleY(1.6);
+      
+        opacity: 0;
+      }
+  }
+  
+  &:active {
     transform: translateY(-1px);
-    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
-}
-
-.btn--white {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+  
+  &--white {
     background-color: $color-white;
     color: $color-grey-dark;
-    
-}
+    &::after {
+        background-color: $color-white;
+      }
+  }
 
-.btn::after {
+  &::after {
     /* Must specify content and display - even if empty */
     content: "";
     display: inline-block;
@@ -186,23 +203,12 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
-    transition: all .4s;
-}
+    transition: all 0.4s;
+  }
 
-.btn--white::after {
-    background-color: $color-white;
-}
-
-.btn:hover::after {
-    /* scale- increases the element */
-    transform: scaleX(1.4) scaleY(1.6);
-
-    opacity: 0;
-}
-
-.btn--animated {
+  &--animated {
     /* anim. name, duration, timing function, delay */
-    animation: moveInBottom .5s ease-out .75s;
+    animation: moveInBottom 0.5s ease-out 0.75s;
     animation-fill-mode: backwards;
+  }
 }
-
