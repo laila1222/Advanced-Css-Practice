@@ -1,0 +1,19 @@
+/* We declare after and before, since we have those selecters too.  */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* Set border box for the body, so that will be inherited! */
+  box-sizing: inherit;
+}
+
+html {
+  /* important feature for rem values */
+  // Defines what 1rem is
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
